@@ -31,7 +31,7 @@
 }
 
 .customCSSTopnav {
-    overflow: hidden;
+    height: 3rem;
     background-color: rgb(68, 68, 68);
 }
 
@@ -64,7 +64,8 @@
 
 .dropdown {
     float: left;
-    overflow: hidden;
+    position: relative;
+    display: inline-block;
 }
 
 .dropdown .dropbtn {
