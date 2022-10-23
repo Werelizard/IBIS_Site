@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="eng">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %} - IBIS</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='/assets/favicon.ico') }}">
+    <link href="{{url_for('static', filename='/bootstrap/bootstrap.min.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{url_for('static', filename='/custom/custom_css.css') }}" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+ 
+<body class = "customCSSBody">
+    <nav class="customCSSTopnav">
+        <ul>
+            <a href="/">Main Page</a>
+            <div class="dropdown">
+                <button class="dropbtn">Search
+                  <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                  <a href="#">Translation</a>
+                  <a href="#">Transliteration</a>
+                  <a href="#">Hieroglyphic</a>
+                </div>
+              </div> 
+              <a href="contact">Contact</a>
+              <a href="about">About</a>
+        </ul>
+    </nav>   
+
+    {% block content %}
+
+    {% endblock %}
+
+    <div class="customCSSFooter">
+        <p>Footer text test.</p>
+    </div>
+</body>
+
+</html>
