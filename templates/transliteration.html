@@ -2,11 +2,19 @@
 {% block content %}
 
 <head>
-    <title>{% block title %}Main Page{% endblock %}</title>
+    <title>{% block title %}Search{% endblock %}</title>
 </head>
 
 <div class="textContainer">
-    Transliteration
+    <form method="post" class="customCSSform">
+        <label for="title" class="customCSSSubTitle">Search by transliteration</label>
+        <br><br>
+        <input type="text" name="transliteration" placeholder="Enter your query here" value="" class="customCSSFormBox"></input>
+        <button type="submit" class="customCSSformButton">Submit</button>
+        <br><br>
+        <input type="checkbox" id="startWithBox" name="searchFirstMatchingOnly" value="">
+        <label for="startWithBox">Only match records that start with query</label>
+    </form>
 </div>
 
 {% endblock %}

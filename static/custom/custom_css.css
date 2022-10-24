@@ -191,3 +191,26 @@
 .customCSSFormBox {
     width: 20%;
 }
+
+.customCSSOutputTable  {
+    table-layout: fixed;
+    width: 100%;
+    border: none;
+}
+
+.customCSSOutputTable th {
+    padding: 0.5em;
+    font-weight: bold;
+    border: none;
+    background-color: #37664a9f;
+    cursor: pointer;
+}
+
+.customCSSOutputTable td {
+    padding: 0.5em;
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid;
+    border-color: rgba(112, 112, 112, 0.438);
+    width:50%;
+}

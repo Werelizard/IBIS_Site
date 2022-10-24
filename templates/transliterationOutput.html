@@ -7,9 +7,9 @@
 
 <div class="textContainer">
     <form method="post" class="customCSSform">
-        <label for="title" class="customCSSSubTitle">Search by translation</label>
+        <label for="title" class="customCSSSubTitle">Search by transliteration</label>
         <br><br>
-        <input type="text" name="translation" placeholder="Enter your query here" value="" class="customCSSFormBox"></input>
+        <input type="text" name="transliteration" placeholder="Enter your query here" value="" class="customCSSFormBox"></input>
         <button type="submit" class="customCSSformButton">Submit</button>
         <br><br>
         <input type="checkbox" id="startWithBox" name="searchFirstMatchingOnly" value="">
@@ -17,10 +17,11 @@
     </form>
 </div>
 
+
 <div class="textContainer">
     {% if entries == 'None' %}
     <p class="customCSSSubTitle">Query results</p>
-    <p style="text-align: center;">No results were found matching the query within available translations</p>
+    <p style="text-align: center;">No results were found matching the query within available transliterations</p>
     {% endif %}
 
     {% if entries != 'None' %}
@@ -50,7 +51,6 @@
     </table>
 
 </div>
-
 
 
 {% endblock %}
