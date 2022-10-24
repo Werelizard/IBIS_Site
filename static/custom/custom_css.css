@@ -214,3 +214,7 @@
     border-color: rgba(112, 112, 112, 0.438);
     width:50%;
 }
+
+.customCSSOutputTable tr:hover {
+    background-color: #dadadaa1
+}
