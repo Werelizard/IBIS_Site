@@ -59,10 +59,8 @@ def translation():
                 conn = get_db_connection()
                 #Determine whether to look for words starting with the request or words containing the request
                 if startWithQueryOnly:
-                    conn.execute("PRAGMA case_sensitive_like = 0")
                     output = conn.execute("SELECT * FROM hieroglyphs WHERE UPPER(hieroglyphs.translation) LIKE  UPPER('" + translationRequest.lower() +"%') OR UPPER(hieroglyphs.translationEnglish) LIKE  UPPER('" + translationRequest.lower() +"%')").fetchall()
                 else:
-                    conn.execute("PRAGMA case_sensitive_like = 0")
                     output = conn.execute("SELECT * FROM hieroglyphs WHERE UPPER(hieroglyphs.translation) LIKE  UPPER('%" + translationRequest.lower() +"%') OR UPPER(hieroglyphs.translationEnglish) LIKE  UPPER('%" + translationRequest.lower() +"%')").fetchall()
                 conn.close()
 
@@ -102,12 +100,10 @@ def translitertion():
                 conn = get_db_connection()
                 #Determine whether to look for words starting with the request or words containing the request
                 if startWithQueryOnly:
-                    conn.execute("PRAGMA case_sensitive_like = 1")
                     output = conn.execute("SELECT * FROM hieroglyphs WHERE hieroglyphs.transliteration LIKE '" + transliterationRequest +"%'").fetchall()
                 # else:
                 #     output = conn.execute("SELECT * FROM hieroglyphs WHERE hieroglyphs.transliteration LIKE '%" + transliterationRequest +"%' OR hieroglyphs.translationEnglish LIKE  '%" + transliterationRequest +"%'").fetchall()
                 else:
-                    conn.execute("PRAGMA case_sensitive_like = 1")
                     output = conn.execute("SELECT * FROM hieroglyphs WHERE hieroglyphs.transliteration LIKE '%" + transliterationRequest +"%'").fetchall()
                 conn.close()
 
