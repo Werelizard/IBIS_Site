@@ -10,32 +10,58 @@
   <link href="{{url_for('static', filename='/bootstrap/bootstrap.min.css') }}" type="text/css" rel="stylesheet">
   <link href="{{url_for('static', filename='/custom/custom_css.css') }}" type="text/css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body class="customCSSBody">
   <nav class="customCSSTopnav">
     <a href="/">Main Page</a>
     <div class="dropdown">
-      <button class="dropbtn">Search
+      <button class="dropbtn">Search Entries
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-content">
-        <a href="#">Translation</a>
-        <a href="#">Transliteration</a>
-        <a href="#">Hieroglyphic</a>
+        <a href="/search/translation">Translation</a>
+        <a href="/search/transliteration">Transliteration</a>
+        <a href="/search/hieroglyphics">Hieroglyphic</a>
       </div>
     </div>
-    <a href="contact">Contact</a>
-    <a href="about">About</a>
+    <a href="/about">About</a>
+    <a href="/references">References</a>
+    <a href="/contact">Contact</a>
   </nav>
+
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Back to top</button>
 
   {% block content %}
 
   {% endblock %}
 
   <div class="customCSSFooter">
-    <p>Footer text test.</p>
+    <p>IBIS was developed and designed by Lydia Horwath.</p>
   </div>
+
+  <script>
+    // Get the button
+    let mybutton = document.getElementById("myBtn");
+    
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+    
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+      </script>
 </body>
 
 </html>

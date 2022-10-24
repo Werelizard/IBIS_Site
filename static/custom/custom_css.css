@@ -7,7 +7,7 @@
     border: 1px solid #e6dede;
     background-color: rgba(255, 255, 255, 0.664);
     padding: 1%;
-    text-align: center;
+    text-align: justify;
 }
 
 .customCSSFooter {
@@ -27,7 +27,8 @@
     font-family: "Roboto", sans-serif;
     background-image: url('/static/assets/background.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: fill;
+    background-attachment: fixed;
 }
 
 .customCSSTopnav {
@@ -108,3 +109,64 @@
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+.customCSSTitle {
+    font-size: 2.25em;
+    font-weight: bolder;
+}
+
+.customCSSSubTitle {
+    font-size: 1.65em;
+    color: rgb(61, 61, 61);
+    font-weight: bold;
+}
+
+.customCSSTextBody {
+    font-size: 1em;
+    color: rgb(37, 37, 37);
+}
+
+.imageCenterText {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+}
+
+.imageCenterInline {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 20em;
+}
+
+.customCSSTextLegend {
+    text-align: center;
+    font-size: 0.75em;
+    font-style: italic;
+}
+
+.customCSSSCenterTable {
+    margin-left: 15em;
+    margin-right: 15em;
+}
+
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 5em;
+    right: 1em;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: #37664a;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+  }
+  
+  #myBtn:hover {
+    background-color: #555;
+  }
