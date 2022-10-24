@@ -59,8 +59,10 @@ def translation():
                 conn = get_db_connection()
                 #Determine whether to look for words starting with the request or words containing the request
                 if startWithQueryOnly:
+                    conn.execute("PRAGMA case_sensitive_like = 0")
                     output = conn.execute("SELECT * FROM hieroglyphs WHERE UPPER(hieroglyphs.translation) LIKE  UPPER('" + translationRequest.lower() +"%') OR UPPER(hieroglyphs.translationEnglish) LIKE  UPPER('" + translationRequest.lower() +"%')").fetchall()
                 else:
+                    conn.execute("PRAGMA case_sensitive_like = 0")
                     output = conn.execute("SELECT * FROM hieroglyphs WHERE UPPER(hieroglyphs.translation) LIKE  UPPER('%" + translationRequest.lower() +"%') OR UPPER(hieroglyphs.translationEnglish) LIKE  UPPER('%" + translationRequest.lower() +"%')").fetchall()
                 conn.close()
 
@@ -75,9 +77,13 @@ def translation():
 
                 #Return template
                 return render_template('translationOutput.html', entries = entries)
+        
+        #If error, log error to console and return default page
         except Exception as error:
             error_text = str(error); print(error_text)
             return render_template('translation.html')
+
+    #Default behavior
     return render_template('translation.html')
 
 @app.route('/search/transliteration', methods=('GET', 'POST'))
@@ -96,9 +102,13 @@ def translitertion():
                 conn = get_db_connection()
                 #Determine whether to look for words starting with the request or words containing the request
                 if startWithQueryOnly:
-                    output = conn.execute("SELECT * FROM hieroglyphs WHERE UPPER(hieroglyphs.transliteration) LIKE  UPPER('" + transliterationRequest.lower() +"%') OR UPPER(hieroglyphs.translationEnglish) LIKE  UPPER('" + transliterationRequest.lower() +"%')").fetchall()
+                    conn.execute("PRAGMA case_sensitive_like = 1")
+                    output = conn.execute("SELECT * FROM hieroglyphs WHERE hieroglyphs.transliteration LIKE '" + transliterationRequest +"%'").fetchall()
+                # else:
+                #     output = conn.execute("SELECT * FROM hieroglyphs WHERE hieroglyphs.transliteration LIKE '%" + transliterationRequest +"%' OR hieroglyphs.translationEnglish LIKE  '%" + transliterationRequest +"%'").fetchall()
                 else:
-                    output = conn.execute("SELECT * FROM hieroglyphs WHERE UPPER(hieroglyphs.transliteration) LIKE  UPPER('%" + transliterationRequest.lower() +"%') OR UPPER(hieroglyphs.translationEnglish) LIKE  UPPER('%" + transliterationRequest.lower() +"%')").fetchall()
+                    conn.execute("PRAGMA case_sensitive_like = 1")
+                    output = conn.execute("SELECT * FROM hieroglyphs WHERE hieroglyphs.transliteration LIKE '%" + transliterationRequest +"%'").fetchall()
                 conn.close()
 
                 #Repackage the query results into a dictionary for later iterations
@@ -112,9 +122,13 @@ def translitertion():
 
                 #Return template
                 return render_template('transliterationOutput.html', entries = entries)
+
+        #If error, log error to console and return default page
         except Exception as error:
             error_text = str(error); print(error_text)
             return render_template('transliteration.html')
+    
+    #Default behavior
     return render_template('transliteration.html')
     
 
