@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<head>
+    <title>{% block title %}Main Page{% endblock %}</title>
+</head>
+
+<div class="textContainer">
+    <form method="post" class="customCSSform">
+        <label for="title" class="customCSSSubTitle">Search translation</label>
+        <br><br>
+        <input type="text" name="translation" placeholder="" value="" class="customCSSFormBox"></input>
+        <br><br>
+
+        <button type="submit" class="customCSSformButton">Submit</button>
+    </form>
+</div>
+
+<div class="textContainer">
+    {{translationOutput}}
+</div>
+
+{% endblock %}
