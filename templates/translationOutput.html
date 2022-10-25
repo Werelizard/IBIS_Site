@@ -9,7 +9,8 @@
     <form method="post" class="customCSSform">
         <label for="title" class="customCSSSubTitle">Search by translation</label>
         <br><br>
-        <input type="text" name="translation" placeholder="Enter your query here" value="" class="customCSSFormBox"></input>
+        <input type="text" name="translation" placeholder="Enter your query here" value=""
+            class="customCSSFormBox"></input>
         <button type="submit" class="customCSSformButton">Submit</button>
         <br><br>
         <input type="checkbox" id="startWithBox" name="searchFirstMatchingOnly" value="">
@@ -41,12 +42,16 @@
             <td>{{ value['translationEnglish'] }}</td>
             <td>{{ value['transliteration'] }}</td>
             <td>{{ value['gardiner'] }}</td>
-            <td>{{ value['tags'] }}</td>
-            <td>{{ value['references'] }}</td>
-            <td>{{ value['notes'] }}</td>
+            <td>
+                {% for tag in value['tags'].split(',')  %}
+                <a href="/search/meta?tags={{tag}}">{{tag}}</a>
+                {% endfor %}
+            </td>
+            <td><a href=/references?index={{ value['index'] }}>Reference available here</a> </td>
+                    <td>{{ value['notes'] }}</td>
         </tr>
         {% endfor %}
-        {% endif %}
+    {% endif %}    
     </table>
 
 </div>

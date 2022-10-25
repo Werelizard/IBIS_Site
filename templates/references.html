@@ -6,9 +6,136 @@
 </head>
 
 <div class="textContainer">
-    references
+    <p class="customCSSSubTitle">&#10211 References</p>
+    <p class="customCSSTextBody">Below are a list of references for the queried results, including bibliographical information, groups and supplemental information.</p> 
 </div>
 
+{% if not index %}
+<div class="textContainer">
+    Index value not passed
+</div>
+{% endif %}
 
+{% if index %}
+<div class="textContainer">
+    {% if entries != 'None' %}
+    <p class="customCSSSubTitle">References for "{{ entries['translation'] }}"</p>
+    
+    <table class="customCSSReferencesTable">
+        <tr>
+            <td>
+                <span style="font-weight:bold;">Tags:</span>
+            </td>
+            <td>
+                {% for tag in entries['tags'] %}
+                <a href="/search/meta?tags={{tag}}">{{tag}}</a>
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span style="font-weight:bold;">Bibliography:</span>
+            </td>
+            <td>
+                {% if entries['bibliography'] != 'None' %}
+                {% for book in entries['bibliography'] %}
+                {{book}}
+                <br>
+                {% endfor %}
+                {% endif %}
+                {% if entries['bibliography'] == 'None' %}
+                None
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span style="font-weight:bold;">Links:</span>
+            </td>
+            <td>
+                {% if entries['outerLinks'] != 'None' %}
+                {% for link in entries['outerLinks'] %}
+                <a href={{link}}>{{link}}</a>
+                <br>
+                {% endfor %}
+                {% endif %}
+                {% if entries['outerLinks'] == 'None' %}
+                None
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+    {% endif %}
+    {% if entries == 'None' %}
+    <p style="text-align: center;">No results were found matching the provided index</p>
+    {% endif %}
+
+</div>
+
+{% if 'King' in entries['tags'] %}
+<div class="textContainer">
+    <p class="customCSSSubTitle">This is a king's name with the following associated names:</p>
+    <table class="customCSSReferencesTable">
+        <tr>
+            <td>
+                <span style="font-weight:bold;">Horus name:</span>
+            </td>
+            <td>
+                {{ entries['kings2'] }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span style="font-weight:bold;">Two ladies name:</span>
+            </td>
+            <td>
+                {{ entries['kings4'] }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span style="font-weight:bold;">Golden Horus name:</span>
+            </td>
+            <td>
+                {{ entries['kings3'] }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span style="font-weight:bold;">Throne name:</span>
+            </td>
+            <td>
+                {{ entries['kings5'] }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span style="font-weight:bold;">Personal name name:</span>
+            </td>
+            <td>
+                {{ entries['kings1'] }}
+            </td>
+        </tr>
+    </table>
+
+    <!-- 'kings1':['kingsPersonal'],'kings2':['kingsHorus'],'kings3':['kingsGolden'],'kings4':['kingsNbti'],'kings5':['kingsNyswt']} -->
+</div>
+{% endif %}
+
+{% if groupInfo %}
+<div class="textContainer">
+    <p class="customCSSSubTitle">This entry is part of the following group:</p>
+    {% for key, value in groupInfo.items() %}
+    <p class="customCSSTextBody" style="font-weight:bold;font-size: larger;">"{{key}}"</p>
+    <hr>
+    {% for name in value %}
+    <a href = /references?index={{name [0]}}>{{name [1]}}</a>
+    <br>
+    {% endfor %}
+    {% endfor %}
+</div>
+{% endif %}
+
+{% endif %}
 
 {% endblock %}

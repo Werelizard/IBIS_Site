@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<head>
+    <title>{% block title %}Error{% endblock %}</title>
+</head>
+
+<div class="textContainer" style="text-align:center;">
+    <div class="customCSSTitle">Error: 403</div>
+    <div class="customCSSSubTitle">Bad request</div>
+    <div class="customCSSTextBody">
+        <a href="/">Click here to return to the main page</a>
+    </div>
+</div>
+
+{% endblock %}

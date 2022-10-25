@@ -42,8 +42,12 @@
             <td>{{ value['translationEnglish'] }}</td>
             <td>{{ value['transliteration'] }}</td>
             <td>{{ value['gardiner'] }}</td>
-            <td>{{ value['tags'] }}</td>
-            <td>{{ value['references'] }}</td>
+            <td>
+                {% for tag in value['tags'].split(',')  %}
+                <a href="/search/meta?tags={{tag}}">{{tag}}</a>
+                {% endfor %}
+            </td>
+            <td><a href={{ value['references'] }}?index={{ value['index'] }}>Reference available here</a></td>
             <td>{{ value['notes'] }}</td>
         </tr>
         {% endfor %}
